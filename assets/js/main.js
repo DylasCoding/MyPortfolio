@@ -227,3 +227,29 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+
+/**
+ * Skills filter
+ */
+document.addEventListener("DOMContentLoaded", () => {
+  const filters = document.querySelectorAll(".skills-filters li");
+  const skillItems = document.querySelectorAll(".skill-item1");
+
+  filters.forEach((filter) => {
+    filter.addEventListener("click", () => {
+      // Xóa lớp 'filter-active' khỏi tất cả các bộ lọc
+      filters.forEach((f) => f.classList.remove("filter-active"));
+      filter.classList.add("filter-active");
+
+      const filterValue = filter.getAttribute("data-filter");
+
+      skillItems.forEach((item) => {
+        if (filterValue === "*" || item.classList.contains(filterValue.substring(1))) {
+          item.style.display = "block";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    });
+  });
+});

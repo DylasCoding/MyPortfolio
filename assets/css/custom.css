@@ -1,17 +1,20 @@
-.skills-wrapper1 {
-    display: grid;
-    justify-items: center;
-    text-align: center;
+.icon-wrapper1 img.skill-icon {
+    width: 60px;   /* chỉnh theo ý bạn */
+    height: 60px;
+    object-fit: contain; /* giữ tỉ lệ ảnh */
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.2)); /* hiệu ứng nếu cần */
 }
+
 
 .skill-item1 {
     position: relative;
-    padding: 20px;
-    border-radius: 12px;
-    background: #fff;
+    padding: 25px 15px;
+    border-radius: 16px;
+    background: rgba(81, 77, 77, 0.68);
     transition: transform 0.3s ease;
     cursor: pointer;
     overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 .skill-item1:hover {
@@ -19,20 +22,20 @@
 }
 
 .skill-item1 .icon-wrapper1 {
-    font-size: 40px;
+    font-size: 42px;
     margin-bottom: 10px;
     position: relative;
     z-index: 2;
 }
 
-/* Hiệu ứng loang màu */
+/* hiệu ứng blur loang */
 .skill-item1::before {
     content: "";
     position: absolute;
     inset: 0;
-    border-radius: 12px;
+    border-radius: 16px;
     background: var(--skill-color, #ccc);
-    filter: blur(30px);
+    filter: blur(35px);
     opacity: 0;
     transition: opacity 0.4s ease;
     z-index: 1;
@@ -42,7 +45,7 @@
     opacity: 0.7;
 }
 
-/* Gán màu icon -> lấy từ attribute data-color */
+/* lấy màu từ attribute */
 .skill-item1[data-color]::before {
     --skill-color: attr(data-color color);
 }
@@ -52,4 +55,33 @@
     font-weight: 500;
     position: relative;
     z-index: 2;
+}
+
+.skills-filters {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Chuyển sang dạng hàng ngang */
+    flex-direction: row; /* Đảm bảo các mục nằm ngang */
+    gap: 10px; /* Khoảng cách giữa các mục */
+    justify-content: center; /* Căn giữa các mục */
+}
+
+.skills-filters li {
+    cursor: pointer;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--default-color);
+    transition: all 0.3s ease-in-out;
+    border-radius: 6px;
+    background: transparent;
+    border-left: 3px solid transparent;
+}
+
+.skills-filters li:hover,
+.skills-filters li.filter-active {
+    color: var(--accent-color);
+    background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+    border-left-color: var(--accent-color);
 }
