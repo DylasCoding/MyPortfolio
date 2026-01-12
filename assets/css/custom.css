@@ -85,3 +85,85 @@
     background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
     border-left-color: var(--accent-color);
 }
+
+:root {
+    --lightbox-max-w: 60vw; /* change this to 50vw / 40vw to make even smaller */
+    --lightbox-max-h: 60vh; /* change this to 50vh / 40vh to make even smaller */
+}
+
+/* Stronger caps for desktop and responsive smaller caps for mobile */
+.glightbox-container .gslide .gcontent,
+.glightbox-container .gslide .gcontent img {
+    max-width: var(--lightbox-max-w) !important;
+    max-height: var(--lightbox-max-h) !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    box-sizing: border-box;
+    padding: 6px; /* optional inner spacing */
+}
+
+/* Option: make it even smaller on very large screens */
+@media (min-width: 1400px) {
+    :root { --lightbox-max-w: 50vw; --lightbox-max-h: 50vh; }
+}
+
+/* Option: increase usable area on small phones while keeping it limited */
+@media (max-width: 600px) {
+    :root { --lightbox-max-w: 92vw; --lightbox-max-h: 72vh; }
+}
+
+/* keep zoom-out cursor */
+.glightbox-container img {
+    cursor: zoom-out !important;
+}
+
+/* Container chính (vòng tròn icon) */
+.more-details-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.8);
+    color: #191818;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+/* Dòng chữ More Details có vòng bọc */
+.more-details-btn .btn-text {
+    position: absolute;
+    left: 80%; /* Để một phần nhãn nằm dưới icon tạo cảm giác liên kết */
+
+    /* Vòng bọc xung quanh chữ */
+    background: rgba(255, 255, 255, 0.8); /* Cùng màu với icon hoặc khác màu tùy bạn */
+    color: #191818;
+    padding: 6px 15px 6px 25px; /* Padding trái lớn hơn để bù phần nằm dưới icon */
+    border-radius: 10px 10px 10px 10px; /* Bo góc bên phải */
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    z-index: -1; /* Nằm dưới icon */
+
+    /* Hiệu ứng ẩn ban đầu */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-10px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Hiệu ứng trượt có độ nảy */
+}
+
+/* Hiệu ứng khi Hover */
+.more-details-btn:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.05); /* Icon hơi to lên một chút */
+}
+
+.more-details-btn:hover .btn-text {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(10px); /* Trượt hẳn ra ngoài */
+}
