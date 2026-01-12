@@ -1653,6 +1653,36 @@ section,
   transform: translateY(-5px);
 }
 
+.portfolio-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.portfolio-wrap::before {
+    pointer-events: none;
+}
+
+.portfolio-wrap:hover::before {
+    opacity: 1;
+}
+
+.portfolio .portfolio-info h4 {
+    color: #ffffff;
+}
+
+.portfolio-wrap:hover .portfolio-info h4 {
+    color: #ffffff;
+}
+
+.portfolio-info {
+    text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+
 .portfolio .portfolio-wrap:hover img {
   transform: scale(1.08);
 }
@@ -2536,4 +2566,19 @@ section,
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
+}
+
+.skills-heading {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--accent-color);
+    padding-left: 12px;
+}
+
+.skills-subheading {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 2rem 0 1rem;
+    color: #555;
 }
